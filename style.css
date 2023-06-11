@@ -1,0 +1,22 @@
+body {
+    margin:0;
+    padding:0;
+
+}
+
+.heading {
+    display:flex;
+    justify-content: center;
+    font-family:sans-serif , Roboto;
+}
+
+.row {
+    display:flex;
+}
+
+.main-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

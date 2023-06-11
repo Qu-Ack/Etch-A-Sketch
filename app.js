@@ -3,6 +3,9 @@ let innerHTMLString = '';
 let gridSize = 16;
 let color = "red";
 
+const gridButton = document.querySelector(".grid-btn");
+const clear = document.querySelector(".color");
+
 
 for(let i = 1; i <= gridSize ; i++) {
      innerHTMLString += '<div class="row"> </div>'
@@ -25,3 +28,10 @@ const box = document.querySelectorAll(".box");
 box.forEach(draw => draw.addEventListener("mousemove" ,  function() {
     draw.style.background = "red";
 }))
+
+clear.addEventListener('click' , function() {
+    box.forEach(clean => {
+        clean.style.background = "white";
+    })
+})
+

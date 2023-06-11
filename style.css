@@ -11,12 +11,57 @@ body {
 }
 
 .row {
-    display:flex;
+    height: 25px;
+    width:460px;
+    display:flex;       
+    
 }
-
-.main-container {
+.buttons {
     display:flex;
     justify-content: center;
     align-items: center;
+    padding:8px;
+    gap:64px;
+    margin-top: 32px;
+}
+
+.color , .grid-btn {
+    background:rgb(43, 252, 196);
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px burlywood solid;
+    transition: all 0.5s;
+    padding:8px;
+    border-radius: 10px;
+
+}
+
+.color:hover , .grid-btn:hover {
+    transform: scale(1.1);
+    background: rgb(0, 255, 195);
+} 
+
+.box {
+    flex:1;
+    background:white;
+    border:0.25px solid black;
+    transition:all 0.25s;
+    
+}
+
+.box:hover {
+    background:red;
+    
+}
+
+.main-container {
+    margin:0 auto;
+    display:flex;
+    border:1px solid black;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    max-width:460px;
+    max-height:500px;
 }

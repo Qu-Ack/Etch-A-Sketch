@@ -2,26 +2,28 @@ const container = document.querySelector(".main-container");
 let innerHTMLString = '';
 let gridSize = 16;
 let color = "red";
-
 const gridButton = document.querySelector(".grid-btn");
 const clear = document.querySelector(".color");
 
 
-for(let i = 1; i <= gridSize ; i++) {
-     innerHTMLString += '<div class="row"> </div>'
+function gridRow(gridnumber) {
+    for(let i = 1; i <= gridnumber ; i++) {
+        innerHTMLString += '<div class="row"> </div>'
+   }
+   container.innerHTML = innerHTMLString;
+   innerHTMLString = "";
 }
-container.innerHTML = innerHTMLString;
+
+gridRow(gridSize);
+
 
 const row = document.querySelectorAll(".row")
 let columnHTMLString = "";
 
-row.forEach(element => {
-    for(let j=1 ; j<= gridSize; j++) {
-        columnHTMLString += '<div class="box"></div>'
-    }
-    element.innerHTML = columnHTMLString;
-    columnHTMLString = "";
-})
+
+
+gridColumn(gridSize , row);
+
 
 const box = document.querySelectorAll(".box");
 
@@ -34,4 +36,32 @@ clear.addEventListener('click' , function() {
         clean.style.background = "white";
     })
 })
+
+gridButton.addEventListener("click" , function() {
+    let userInput = parseInt(prompt("What size? "));
+    removeGrid();
+    gridRow(userInput)
+    const rowAgain = document.querySelectorAll(".row");
+    gridColumn(userInput , rowAgain)
+})
+
+
+
+
+
+function removeGrid() {
+    row.forEach(del => {
+        container.removeChild(del);
+    })
+}
+
+function gridColumn(gridnumber , row) {
+    row.forEach(element => {
+        for(let j=1 ; j<= gridnumber; j++) {
+            columnHTMLString += '<div class="box"></div>'
+        }
+        element.innerHTML = columnHTMLString;
+        columnHTMLString = "";
+    })  
+}
 

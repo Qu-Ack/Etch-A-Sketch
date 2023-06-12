@@ -24,35 +24,40 @@ let columnHTMLString = "";
 
 gridColumn(gridSize , row);
 
-
 const box = document.querySelectorAll(".box");
 
-box.forEach(draw => draw.addEventListener("mousemove" ,  function() {
+
+
+
+drawBackground(box);
+clearBackground(box);
+
+gridButton.addEventListener('click' , function() {
+    reGrid();
+});
+
+
+
+function drawBackground(thing){
+thing.forEach(draw => draw.addEventListener("mousemove" ,  function() {
     draw.style.background = "red";
 }))
+}
 
+function clearBackground(anotherthing) {
 clear.addEventListener('click' , function() {
-    box.forEach(clean => {
+    anotherthing.forEach(clean => {
         clean.style.background = "white";
     })
 })
-
-gridButton.addEventListener("click" , function() {
-    let userInput = parseInt(prompt("What size? "));
-    removeGrid();
-    gridRow(userInput)
-    const rowAgain = document.querySelectorAll(".row");
-    gridColumn(userInput , rowAgain)
-})
-
-
+}
 
 
 
 function removeGrid() {
-    row.forEach(del => {
-        container.removeChild(del);
-    })
+    while(container.firstChild) {
+        container.removeChild(container.firstChild)
+    }
 }
 
 function gridColumn(gridnumber , row) {
@@ -65,3 +70,16 @@ function gridColumn(gridnumber , row) {
     })  
 }
 
+
+function reGrid() {
+        let userInput = parseInt(prompt("What size? "));
+        removeGrid();
+        gridRow(userInput)
+        const rowAgain = document.querySelectorAll(".row");
+        gridColumn(userInput , rowAgain);
+        const boxAgain = document.querySelectorAll(".box");
+        drawBackground(boxAgain);
+        clearBackground(boxAgain);
+        
+    }
+    
